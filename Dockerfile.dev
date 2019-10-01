@@ -1,0 +1,17 @@
+#Development docker File
+#to run a custom docker filename
+#docker build -f Dockerfile.dev .
+#remove imports packages
+
+#to set volumes locally  docker run -p 3000:3000 -v /app/node_modules -v $(pwd):/app 7b1bc7296658
+FROM node:alpine 
+
+WORKDIR /app
+
+COPY package.json .
+
+RUN npm install
+
+COPY . .
+
+CMD ["npm", "run", "start"]
